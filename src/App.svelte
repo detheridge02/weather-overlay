@@ -1,19 +1,14 @@
 <script lang="ts">
-  import { fly } from 'svelte/transition';
   import type { WeatherResult } from "./lib/weatherAPI";
   import { getWeather } from "./lib/weatherAPI";
+  import { fly } from 'svelte/transition';
 
   let currentWeather: WeatherResult | null = null;
   let weatherVisible = false;
   const params = new URLSearchParams(window.location.search);
   let errorMessage = "";
-  let tempUnit: string = "imperial";
-
-  if (params.has("tempUnit") && (params.get("tempUnit")=="imperial" || params.get("tempUnit")=="metric")) {
-    tempUnit = params.get("tempUnit");
-  } 
   
-  if (!params.has("lat") || !params.has("lon")) {
+  if (!params.has("lat") || !params.has("lon") || !params.has('units')) {
     errorMessage = "Missing required params.";
   } else {
     getLatestAndShow();
@@ -24,7 +19,7 @@
       currentWeather = await getWeather({
         latitude: Number(params.get("lat")),
         longitude: Number(params.get("lon")),
-        temp_unit: tempUnit,
+        weatherUnits: String(params.get("units")),
       });
     } catch (error) {
       errorMessage = error.message;
@@ -41,7 +36,7 @@
       setTimeout(getLatestAndShow, 60 * 1000);
     }
   }
-
+  
 </script>
 
 <main>
@@ -54,7 +49,7 @@
       <div class="symbol-container">
         <!-- TODO : Find better ALT text-->
         <img
-          src={`images/svg/${currentWeather.symbol_code}.svg`} alt={`${currentWeather.symbol_code}`}
+          src={`http://openweathermap.org/img/wn/${currentWeather.symbol_code}@2x.png`} alt={`${currentWeather.symbol_code}`}
         />
       </div>
       <div class="temperature">
@@ -69,12 +64,11 @@
           </svg>
         </div>
         <div class="wind-speed">
-          {currentWeather.wind_speed.mph} mph
-          <!-- {currentWeather.wind_speed.kph} km/h -->
+          {currentWeather.wind_speed}
         </div>
       </div>
       <div class="credit">
-        Data from MET Norway
+        Data from OpenWeatherMap
       </div>
     </div>
   {/if}
@@ -94,7 +88,8 @@
 
   .temperature {
     text-align: center;
-    line-height: 20vmin;
+    line-height: 18vmin;
+    font-size: 16vmin;
   }
 
   .container {
@@ -155,7 +150,7 @@
 
   .unit {
     margin-left: 2vmin;
-    font-size: 10vmin;
+    font-size: 8vmin;
   }
 
   .credit {
