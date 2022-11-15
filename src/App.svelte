@@ -9,7 +9,7 @@
   let errorMessage = "";
   
   if (!params.has("lat") || !params.has("lon") || !params.has('units')) {
-    errorMessage = "Missing required params.";
+    errorMessage = "Missing required params";
   } else {
     getLatestAndShow();
   }
@@ -41,7 +41,7 @@
 
 <main>
   {#if errorMessage}
-    <div>{errorMessage}</div>
+    <div class="errorMsg">{errorMessage}</div>
   {/if}
   {#if currentWeather && weatherVisible}
     <div class="container" transition:fly="{{ x: -600, duration: 2000 }}">
@@ -53,7 +53,7 @@
         />
       </div>
       <div class="temperature">
-        {currentWeather.temperature.local} <span class="unit">{currentWeather.temperature.symbol}</span>
+        {currentWeather.temperature.local}<span class="unit">{currentWeather.temperature.symbol}</span>
       </div>
       <div class="wind">
         <div class="wind-direction" style:transform={`rotate(${currentWeather.wind_from_direction}deg)`}>
@@ -64,7 +64,7 @@
           </svg>
         </div>
         <div class="wind-speed">
-          {currentWeather.wind_speed} {currentWeather.wind_unit}
+          {currentWeather.wind_speed}{currentWeather.wind_unit}
         </div>
       </div>
       <div class="credit">
