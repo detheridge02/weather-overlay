@@ -33,12 +33,12 @@ export async function getWeather({
     const data = (await response.json()) as Root;
     const temperatureLocal: number = data?.main?.temp;
     const temperatureSymbol: string = weatherUnits == 'imperial' ? '°F' : '°C';
-    const windSpeed: number = weatherUnits == 'imperial' ? data?.wind?.speed : Math.floor(data?.wind?.speed * 2.2369362921);
+    const windSpeed: number = weatherUnits == 'imperial' ? data?.wind?.speed.toFixed(1) : Math.floor(data?.wind?.speed * 2.2369362921).toFixed(1);
     lastResult = {
       symbol_code: data.weather[0].icon,
       wind_from_direction: data?.wind?.deg,
       wind_speed: windSpeed,
-      wind_unit: 'MPH',
+      wind_unit: "mph",
       temperature: {
         local: temperatureLocal.toFixed(1),
         symbol: temperatureSymbol,
