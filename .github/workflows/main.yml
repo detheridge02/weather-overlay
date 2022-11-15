@@ -27,5 +27,5 @@ jobs:
         with:
           domain: 'de-weather-overlay.surge.sh'
           project: './dist'
-          login: ${{ secrets.surge_login }}
-          token: ${{ secrets.surge_token }}
+          login: detheridge02@gmail.com
+          token: 12d3416a0ed57777e73675a9c081936b
