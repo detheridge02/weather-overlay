@@ -19,7 +19,7 @@ jobs:
           npm install
       - name: Build dist
         run:
-          npm build
+          npm run build
       - name: List dist files
         run: ls dist
       - name: Deploy to de-weather-overlay.surge.sh
