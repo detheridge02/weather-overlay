@@ -3,7 +3,6 @@ name: Deploy Weather overlay
 on: 
   push:
     branches: [main]
-    
 jobs:
   my-job:
     name: Deploy weather overlay app
@@ -16,7 +15,10 @@ jobs:
       - name: Install node dependencies
         run: 
           npm install
+          npm ci
           npm run build
+      - name: List dist files
+        run: cd dist && ls
       - name: Deploy to de-weather-overlay.surge.sh
         uses: dswistowski/surge-sh-action@v1.0.2
         with:
