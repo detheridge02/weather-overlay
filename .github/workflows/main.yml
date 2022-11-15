@@ -17,6 +17,12 @@ jobs:
       - name: Install node dependencies
         run: 
           npm install
+      - name: Create environment file
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_VITE_APPID: "788f836079b901cdd86a04b293dece10"
+          envkey_VITE_API: "WeatherAPI"
       - name: Build dist
         run:
           npm run build
