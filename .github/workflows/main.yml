@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Install node dependencies
-      - run: 
+        run: 
           npm install
           npm run build --if-present
       - name: Deploy to de-weather-overlay.surge.sh
