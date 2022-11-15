@@ -6,6 +6,7 @@ interface GetWeatherOptions {
 }
 
 export interface WeatherResult {
+  description: string;
   symbol_code: string;
   wind_from_direction: number;
   wind_speed: number;
@@ -35,6 +36,7 @@ export async function getWeather({
     const temperatureSymbol: string = weatherUnits == 'imperial' ? '°F' : '°C';
     const windSpeed: number = weatherUnits == 'imperial' ? data?.wind?.speed.toFixed(1) : Math.floor(data?.wind?.speed * 2.2369362921).toFixed(1);
     lastResult = {
+      description: data.weather[0].description,
       symbol_code: data.weather[0].icon,
       wind_from_direction: data?.wind?.deg,
       wind_speed: windSpeed,

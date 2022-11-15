@@ -49,7 +49,7 @@
       <div class="symbol-container">
         <!-- TODO : Find better ALT text-->
         <img
-          src={`http://openweathermap.org/img/wn/${currentWeather.symbol_code}@2x.png`} alt={`${currentWeather.symbol_code}`}
+          src={`http://openweathermap.org/img/wn/${currentWeather.symbol_code}@2x.png`} alt={`${currentWeather.description}`}
         />
       </div>
       <div class="temperature">
