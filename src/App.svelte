@@ -64,7 +64,7 @@
           </svg>
         </div>
         <div class="wind-speed">
-          {currentWeather.wind_speed}
+          {currentWeather.wind_speed} {currentWeather.wind_unit}
         </div>
       </div>
       <div class="credit">
