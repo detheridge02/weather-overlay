@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to de-weather-overlay.surge.sh
-        uses: dswistowski/surge-sh-action@v1.02
+        uses: dswistowski/surge-sh-action@v1.0.2
         with:
           domain: 'foo-bar.surge.sh'
           project: '.dist'
