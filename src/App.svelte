@@ -53,7 +53,7 @@
         />
       </div>
       <div class="temperature">
-        {currentWeather.temperature.local}<span class="unit">{currentWeather.temperature.symbol}</span>
+        {currentWeather.temperature.local}22<span class="unit">{currentWeather.temperature.symbol}</span>
       </div>
       <div class="wind">
         <div class="wind-direction" style:transform={`rotate(${currentWeather.wind_from_direction}deg)`}>
