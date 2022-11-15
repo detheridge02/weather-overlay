@@ -17,10 +17,11 @@ jobs:
       - name: Install node dependencies
         run: 
           npm install
-          npm ci
-          npm run build
+      - name: Build dist
+        run:
+          npm build
       - name: List dist files
-        run: ls
+        run: ls dist
       - name: Deploy to de-weather-overlay.surge.sh
         uses: dswistowski/surge-sh-action@v1.0.2
         with:
