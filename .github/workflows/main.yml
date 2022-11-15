@@ -2,7 +2,10 @@ name: Deploy Weather overlay
 
 on: 
   push:
-    branches: [main]
+    branches: 
+      - main
+    paths-ignore:
+      - '**/README.md'
 jobs:
   my-job:
     name: Deploy weather overlay app
