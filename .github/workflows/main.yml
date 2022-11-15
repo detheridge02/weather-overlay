@@ -16,7 +16,7 @@ jobs:
       - name: Install node dependencies
         run: 
           npm install
-          npm run build --if-present
+          npm run build
       - name: Deploy to de-weather-overlay.surge.sh
         uses: dswistowski/surge-sh-action@v1.0.2
         with:
